@@ -16,7 +16,6 @@ const router = express.Router()
     , updatetaskdetailsController = projectModels['updatetaskdetails']
     , getreporttypesController = projectModels['reporttypecode']
     , getreporttdataController = projectModels['getreportdata']
-    , awssnsController = projectModels['awssns']
     , getdevicetokenController = projectModels['getdevicetoken']
     , notificationController = projectModels['notification']
     , forgotpasswordController = projectModels['forgotpassword']
@@ -33,7 +32,6 @@ router.post('/getuserdetails', getuserdetailsController.getuserdetails)
 router.post('/updatetaskdetails', updatetaskdetailsController.updatetaskdetails)
 router.post('/getreporttype', getreporttypesController.reporttypecode)
 router.post('/getreportdata', getreporttdataController.getreportdata)
-router.post('/pushnotify', awssnsController.awssns)
 router.post('/getdevicetoken', getdevicetokenController.getdevicetoken)
 router.post('/notification', notificationController.notification)
 

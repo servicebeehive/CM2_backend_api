@@ -30,3 +30,6 @@ Thumbs.db
 
 # Coverage reports
 coverage/
+
+# AWS 
+optimus-models/lib/controllers/awssns.js

@@ -19,6 +19,7 @@ const router = express.Router()
     , getdevicetokenController = projectModels['getdevicetoken']
     , notificationController = projectModels['notification']
     , forgotpasswordController = projectModels['forgotpassword']
+    , dropdownDetailsController = projectModels['dropdowndetails']
 
 
 //router.post('/authenticate',adauth.authenticate)
@@ -33,6 +34,7 @@ router.post('/updatetaskdetails', updatetaskdetailsController.updatetaskdetails)
 router.post('/getreporttype', getreporttypesController.reporttypecode)
 router.post('/getreportdata', getreporttdataController.getreportdata)
 router.post('/getdevicetoken', getdevicetokenController.getdevicetoken)
+router.post('/getdropdowndetails', dropdownDetailsController.dropdowndetails)
 router.post('/notification', notificationController.notification)
 
 

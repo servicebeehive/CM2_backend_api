@@ -20,6 +20,8 @@ const router = express.Router()
     , notificationController = projectModels['notification']
     , forgotpasswordController = projectModels['forgotpassword']
     , dropdownDetailsController = projectModels['dropdowndetails']
+    , insertpurchaseheaderController = projectModels['insertpurchaseheader']
+    , insertitemdetailsController = projectModels['insertitemdetails']
 
 
 //router.post('/authenticate',adauth.authenticate)
@@ -35,6 +37,8 @@ router.post('/getreporttype', getreporttypesController.reporttypecode)
 router.post('/getreportdata', getreporttdataController.getreportdata)
 router.post('/getdevicetoken', getdevicetokenController.getdevicetoken)
 router.post('/getdropdowndetails', dropdownDetailsController.dropdowndetails)
+router.post('/insertpurchaseheader', insertpurchaseheaderController.insertpurchaseheader)
+router.post('/insertitemdetails', insertitemdetailsController.insertitemdetails)
 router.post('/notification', notificationController.notification)
 
 

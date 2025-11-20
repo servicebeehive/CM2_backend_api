@@ -6,8 +6,8 @@ module.exports.gettaskdetails = (req, res, next) => {
       , operationtype = req.body.operationtype
       , taskid = req.body.taskid
       , p_user = req.body.p_user
-      ,clientschema = req.headers.options.db.clientdb
-     
+      , clientschema = req.headers.options.db.clientdb
+
       , response = {
          'success': false,
          'message': ''
@@ -15,24 +15,24 @@ module.exports.gettaskdetails = (req, res, next) => {
       }
    console.log('The body is', req.body)
 
-  
+
    return new Promise((resolve, reject) => {
 
-      db.query('select ' +clientschema +'.get_task_details($1::text,$2::int,$3::int)', [operationtype,taskid,p_user], (err, result) => {
+      db.query('select ' + clientschema + '.get_task_details($1::text,$2::int,$3::int)', [operationtype, taskid, p_user], (err, result) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false
-            response['message'] = 'Error in Operation'
+            response['message'] = err.message
             return reject(response)
 
          } else {
-           
-             response['success'] = true             
-             response['message'] = 'data fetch'
-             response['data'] =   result.rows[0].get_task_details
-             return resolve(response)
-                
-            }
+
+            response['success'] = true
+            response['message'] = 'data fetch'
+            response['data'] = result.rows[0].get_task_details
+            return resolve(response)
+
+         }
 
       })
    }).then(response => {

@@ -31,7 +31,7 @@ module.exports.notification = (req, res, next) => {
    fcm.send(message, function (err, data) {
       if (err) {
          response['success'] = false
-         response['message'] = 'Error in Operation'
+         response['message'] = err.message
          return res.status(200).json(response)
       } else {
          response['success'] = true

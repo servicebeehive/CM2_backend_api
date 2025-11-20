@@ -3,6 +3,7 @@ module.exports.updatestockadjustment = (req, res, next) => {
    let options = req.headers.options
       , db = options.db
       , p_loginuser = req.body.p_loginuser
+      , p_updatetype = req.body.p_updatetype
       , clientschema = req.headers.options.db.clientdb
       , response = {
          'success': false,
@@ -15,11 +16,11 @@ module.exports.updatestockadjustment = (req, res, next) => {
 
       const stockValue = JSON.stringify(req.body.p_stock);
 
-      db.query('select ' + clientschema + '.update_stock_adjustment($1::text,$2::jsonb)', [p_loginuser, stockValue], (err, result) => {
+      db.query('select ' + clientschema + '.update_stock_adjustment($1::text,$2::text,$3::jsonb)', [p_loginuser, p_updatetype, stockValue], (err, result) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false
-            response['message'] = 'Error in Operation'
+            response['message'] = err.message
             return reject(response)
 
          } else {

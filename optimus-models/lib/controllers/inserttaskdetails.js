@@ -9,7 +9,7 @@ module.exports.inserttaskdetails = (req, res, next) => {
       , uname = req.body.uname
       , servicetype = req.body.servicetype
       , producttype = req.body.producttype
-      ,clientschema = req.headers.options.db.clientdb
+      , clientschema = req.headers.options.db.clientdb
       , response = {
          'success': false,
          'message': ''
@@ -17,24 +17,24 @@ module.exports.inserttaskdetails = (req, res, next) => {
       }
    console.log('The body is', req.body)
 
-  
+
    return new Promise((resolve, reject) => {
 
-      db.query('select ' +clientschema +'.ins_task_details($1,$2,$3,$4,$5,$6,$7)', [customername,location,phone,remarks,servicetype,producttype,uname], (err, result) => {
+      db.query('select ' + clientschema + '.ins_task_details($1,$2,$3,$4,$5,$6,$7)', [customername, location, phone, remarks, servicetype, producttype, uname], (err, result) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false
-            response['message'] = 'Error in Operation'
+            response['message'] = err.message
             return reject(response)
 
          } else {
-           
-             response['success'] = true             
-             response['message'] = 'data fetch'
-             response['data'] =   result.rows[0].ins_task_details
-             return resolve(response)
-                
-            }
+
+            response['success'] = true
+            response['message'] = 'data fetch'
+            response['data'] = result.rows[0].ins_task_details
+            return resolve(response)
+
+         }
 
       })
    }).then(response => {

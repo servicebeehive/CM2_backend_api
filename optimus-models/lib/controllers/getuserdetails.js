@@ -27,7 +27,7 @@ module.exports.getuserdetails = (req, res, next) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false
-            response['message'] = 'Error in Operation'
+            response['message'] = err.message
             return reject(response)
 
          } else {

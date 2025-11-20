@@ -27,6 +27,7 @@ const router = express.Router()
     , updatestockadjustmentController = projectModels['updatestockadjustment']
     , getitemdetailsController = projectModels['getitemdetails']
     , inserttransactiondetailsController = projectModels['inserttransactiondetails']
+    , returndropdownDetailsController = projectModels['returndropdowndetails']
 
 //router.post('/authenticate',adauth.authenticate)
 
@@ -42,6 +43,7 @@ router.post('/getreportdata', getreporttdataController.getreportdata)
 router.post('/getdevicetoken', getdevicetokenController.getdevicetoken)
 //CM2 APIs
 router.post('/getdropdowndetails', dropdownDetailsController.dropdowndetails)
+router.post('/returndropdowndetails', returndropdownDetailsController.returndropdowndetails)
 router.post('/insertpurchaseheader', insertpurchaseheaderController.insertpurchaseheader)
 router.post('/insertitemdetails', insertitemdetailsController.insertitemdetails)
 router.post('/deletepurchasedetails', deletepurchasedetailsController.deletepurchasedetails)

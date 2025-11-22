@@ -1,31 +1,20 @@
 'use strict'
-module.exports.getuserdetails = (req, res, next) => {
+module.exports.deletechildUOM = (req, res, next) => {
    let options = req.headers.options
       , db = options.db
-      , p_ufullname = req.body.p_ufullname
-      , p_uname = req.body.p_uname
-      , p_pwd = req.body.p_pwd
-      , p_active = req.body.p_active
-      , p_operationtype = req.body.p_operationtype
-      , p_phone = req.body.p_phone
-      , p_utypeid = req.body.p_utypeid
-      , p_email = req.body.p_email
+      , p_uomchildid = req.body.p_uomchildid
       , p_loginuser = req.body.p_loginuser
-      , p_oldpwd = req.body.p_oldpwd
       , clientschema = req.headers.options.db.clientdb
-
       , response = {
          'success': false,
          'message': ''
 
       }
-
    console.log('The body is', req.body)
-
 
    return new Promise((resolve, reject) => {
 
-      db.query('select ' + clientschema + '.get_user_details($1::text,$2::text,$3::text,$4::text,$5::text,$6::text,$7::text,$8::text,$9::text,$10::text)', [p_ufullname, p_uname, p_pwd, p_active, p_operationtype, p_phone, p_utypeid, p_email, p_loginuser, p_oldpwd], (err, result) => {
+      db.query('select ' + clientschema + '.delete_childuom($1::int,$2::text)', [p_uomchildid, p_loginuser], (err, result) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false
@@ -36,7 +25,7 @@ module.exports.getuserdetails = (req, res, next) => {
 
             response['success'] = true
             response['message'] = 'data fetch'
-            response['data'] = result.rows[0].get_user_details
+            response['data'] = result.rows[0].delete_childuom
             return resolve(response)
 
          }

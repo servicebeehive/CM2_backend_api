@@ -27,7 +27,11 @@ const router = express.Router()
     , updatestockadjustmentController = projectModels['updatestockadjustment']
     , getitemdetailsController = projectModels['getitemdetails']
     , inserttransactiondetailsController = projectModels['inserttransactiondetails']
+    , getcalculatedMRPController = projectModels['getcalculatedMRP']
     , returndropdownDetailsController = projectModels['returndropdowndetails']
+    , deletechildUOMController = projectModels['deletechildUOM']
+    , returnitemreportdetailsController = projectModels['returnitemreportdetails']
+    , returntranreportdetailsController = projectModels['returntranreportdetails']
 
 //router.post('/authenticate',adauth.authenticate)
 
@@ -47,10 +51,14 @@ router.post('/returndropdowndetails', returndropdownDetailsController.returndrop
 router.post('/insertpurchaseheader', insertpurchaseheaderController.insertpurchaseheader)
 router.post('/insertitemdetails', insertitemdetailsController.insertitemdetails)
 router.post('/deletepurchasedetails', deletepurchasedetailsController.deletepurchasedetails)
+router.post('/deletechildUOM', deletechildUOMController.deletechildUOM)
 router.post('/getstockadjustment', getstockadjustmentController.getstockadjustment)
 router.post('/updatestockadjustment', updatestockadjustmentController.updatestockadjustment)
 router.post('/getitemdetails', getitemdetailsController.getitemdetails)
 router.post('/inserttransactiondetails', inserttransactiondetailsController.inserttransactiondetails)
+router.post('/getcalculatedMRP', getcalculatedMRPController.getcalculatedMRP)
+router.post('/returnitemreportdetails', returnitemreportdetailsController.returnitemreportdetails)
+router.post('/returntranreportdetails', returntranreportdetailsController.returntranreportdetails)
 router.post('/notification', notificationController.notification)
 //
 console.log('Server Started')

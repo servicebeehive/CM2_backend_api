@@ -4,6 +4,7 @@ module.exports.getcalculatedMRP = (req, res, next) => {
       , db = options.db
       , p_itemid = req.body.p_itemid
       , p_qty = req.body.p_qty
+      , p_uomid = req.body.p_uomid
       , clientschema = req.headers.options.db.clientdb
       , response = {
          'success': false,
@@ -14,7 +15,7 @@ module.exports.getcalculatedMRP = (req, res, next) => {
 
    return new Promise((resolve, reject) => {
 
-      db.query('select ' + clientschema + '.fn_calculate_mrp($1::int,$2::numeric)', [p_itemid, p_qty], (err, result) => {
+      db.query('select ' + clientschema + '.fn_calculate_mrp($1::int,$2::numeric,$3::int)', [p_itemid, p_qty, p_uomid], (err, result) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false

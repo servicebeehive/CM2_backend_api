@@ -1,22 +1,26 @@
 'use strict'
-module.exports.getitemdetails = (req, res, next) => {
+module.exports.gettrasnactionreport = (req, res, next) => {
    let options = req.headers.options
       , db = options.db
-      , p_type = req.body.p_type
-      , p_categoryid = req.body.p_categoryid
-      , p_itemid = req.body.p_itemid
-      , p_username = req.body.p_username
+      , p_reporttype = req.body.p_reporttype
+      , p_fromdate = req.body.p_fromdate
+      , p_todate = req.body.p_todate
+      , p_gsttran = req.body.p_gsttran
+      , p_category = req.body.p_category
+      , p_item = req.body.p_item
+      , p_loginuser = req.body.p_loginuser
       , clientschema = req.headers.options.db.clientdb
       , response = {
          'success': false,
          'message': ''
 
       }
-   console.log('The body is', req.body)
+   console.log('The body is', clientschema)
+
 
    return new Promise((resolve, reject) => {
 
-      db.query('select ' + clientschema + '.get_item_details($1::text,$2::int,$3::int,$4::text)', [p_type, p_categoryid, p_itemid, p_username], (err, result) => {
+      db.query('select ' + clientschema + '.get_trasnactionreport($1::text,$2::text,$3::text,$4::text,$5::text,$6::text,$7::text)', [p_reporttype, p_fromdate, p_todate, p_gsttran, p_category, p_item, p_loginuser], (err, result) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false
@@ -27,7 +31,7 @@ module.exports.getitemdetails = (req, res, next) => {
 
             response['success'] = true
             response['message'] = 'data fetch'
-            response['data'] = result.rows[0].get_item_details
+            response['data'] = result.rows[0].get_trasnactionreport
             return resolve(response)
 
          }

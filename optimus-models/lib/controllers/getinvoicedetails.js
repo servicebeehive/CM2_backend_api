@@ -1,10 +1,12 @@
 'use strict'
-module.exports.getitemdetails = (req, res, next) => {
+module.exports.getinvoicedetails = (req, res, next) => {
    let options = req.headers.options
       , db = options.db
-      , p_type = req.body.p_type
-      , p_categoryid = req.body.p_categoryid
-      , p_itemid = req.body.p_itemid
+      , p_startdate = req.body.p_startdate
+      , p_enddate = req.body.p_enddate
+      , p_customer = req.body.p_customer
+      , p_mobile = req.body.p_mobile
+      , status = req.body.status
       , p_username = req.body.p_username
       , clientschema = req.headers.options.db.clientdb
       , response = {
@@ -12,11 +14,12 @@ module.exports.getitemdetails = (req, res, next) => {
          'message': ''
 
       }
-   console.log('The body is', req.body)
+   console.log('The body is', clientschema)
+
 
    return new Promise((resolve, reject) => {
 
-      db.query('select ' + clientschema + '.get_item_details($1::text,$2::int,$3::int,$4::text)', [p_type, p_categoryid, p_itemid, p_username], (err, result) => {
+      db.query('select ' + clientschema + '.get_invoice_details($1::text,$2::text,$3::text,$4::text,$5::text,$6::text)', [p_startdate, p_enddate, p_customer, p_mobile, status, p_username], (err, result) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false
@@ -27,7 +30,7 @@ module.exports.getitemdetails = (req, res, next) => {
 
             response['success'] = true
             response['message'] = 'data fetch'
-            response['data'] = result.rows[0].get_item_details
+            response['data'] = result.rows[0].get_invoice_details
             return resolve(response)
 
          }

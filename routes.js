@@ -32,6 +32,10 @@ const router = express.Router()
     , deletechildUOMController = projectModels['deletechildUOM']
     , returnitemreportdetailsController = projectModels['returnitemreportdetails']
     , returntranreportdetailsController = projectModels['returntranreportdetails']
+    , gettrasnactionreportController = projectModels['gettrasnactionreport']
+    , getdashboardreportController = projectModels['getdashboardreport']
+    , getinvoicedetailsController = projectModels['getinvoicedetails']
+    , gettrasnactiondetailsController = projectModels['gettrasnactiondetails']
 
 //router.post('/authenticate',adauth.authenticate)
 
@@ -59,6 +63,10 @@ router.post('/inserttransactiondetails', inserttransactiondetailsController.inse
 router.post('/getcalculatedMRP', getcalculatedMRPController.getcalculatedMRP)
 router.post('/returnitemreportdetails', returnitemreportdetailsController.returnitemreportdetails)
 router.post('/returntranreportdetails', returntranreportdetailsController.returntranreportdetails)
+router.post('/gettrasnactionreport', gettrasnactionreportController.gettrasnactionreport)
+router.post('/getdashboardreport', getdashboardreportController.getdashboardreport)
+router.post('/getinvoicedetails', getinvoicedetailsController.getinvoicedetails)
+router.post('/gettrasnactiondetails', gettrasnactiondetailsController.gettrasnactiondetails)
 router.post('/notification', notificationController.notification)
 //
 console.log('Server Started')

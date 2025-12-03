@@ -37,7 +37,7 @@ module.exports.insertitemdetails = (req, res, next) => {
       const uomValue = JSON.stringify(req.body.p_uom);
       console.log('uomValue', uomValue);
 
-      db.query('select ' + clientschema + '.insert_purchase_details_single($1::text,$2::int,$3::text,$4::text,$5::text,$6::int,$7::int,$8::int,$9::text,$10::int,$11::text,$12::int,$13::int,$14::int,$15::int,$16::int,$17::int,$18::text,$19::text,$20::text,$21::text,$22::jsonb)', [p_operationtype, p_purchaseid, p_itemname, p_itemsku, p_location, p_minimumstock, p_categoryid, p_warrentyperiod, p_expirydate, p_uomid, p_childuom, p_currencyid, p_quantity, p_costprice, p_saleprice, p_taxid, p_currentstock, p_warehourse, p_gstitem, p_isactive, p_loginuser, uomValue], (err, result) => {
+      db.query('select ' + clientschema + '.insert_purchase_details_single($1::text,$2::int,$3::text,$4::text,$5::text,$6::int,$7::int,$8::int,$9::text,$10::int,$11::text,$12::int,$13::int,$14::numeric,$15::int,$16::int,$17::int,$18::text,$19::text,$20::text,$21::text,$22::jsonb)', [p_operationtype, p_purchaseid, p_itemname, p_itemsku, p_location, p_minimumstock, p_categoryid, p_warrentyperiod, p_expirydate, p_uomid, p_childuom, p_currencyid, p_quantity, p_costprice, p_saleprice, p_taxid, p_currentstock, p_warehourse, p_gstitem, p_isactive, p_loginuser, uomValue], (err, result) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false

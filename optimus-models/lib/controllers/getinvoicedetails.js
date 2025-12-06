@@ -6,7 +6,7 @@ module.exports.getinvoicedetails = (req, res, next) => {
       , p_enddate = req.body.p_enddate
       , p_customer = req.body.p_customer
       , p_mobile = req.body.p_mobile
-      , status = req.body.status
+      , p_status = req.body.p_status
       , p_username = req.body.p_username
       , clientschema = req.headers.options.db.clientdb
       , response = {
@@ -19,7 +19,7 @@ module.exports.getinvoicedetails = (req, res, next) => {
 
    return new Promise((resolve, reject) => {
 
-      db.query('select ' + clientschema + '.get_invoice_details($1::text,$2::text,$3::text,$4::text,$5::text,$6::text)', [p_startdate, p_enddate, p_customer, p_mobile, status, p_username], (err, result) => {
+      db.query('select ' + clientschema + '.get_invoice_details($1::text,$2::text,$3::text,$4::text,$5::text,$6::text)', [p_startdate, p_enddate, p_customer, p_mobile, p_status, p_username], (err, result) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false

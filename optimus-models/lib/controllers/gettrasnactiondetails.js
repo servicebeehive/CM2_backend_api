@@ -3,6 +3,7 @@ module.exports.gettrasnactiondetails = (req, res, next) => {
    let options = req.headers.options
       , db = options.db
       , p_vendor = req.body.p_vendor
+      , p_invoicenumber = req.body.p_invoicenumber
       , p_invoicestart = req.body.p_invoicestart
       , p_invoiceend = req.body.p_invoiceend
       , p_username = req.body.p_username
@@ -17,7 +18,7 @@ module.exports.gettrasnactiondetails = (req, res, next) => {
 
    return new Promise((resolve, reject) => {
 
-      db.query('select ' + clientschema + '.get_trasnaction_details($1::int,$2::text,$3::text,$4::text)', [p_vendor, p_invoicestart, p_invoiceend, p_username], (err, result) => {
+      db.query('select ' + clientschema + '.get_trasnaction_details($1::int,$2::text,$3::text,$4::text,$5::text)', [p_vendor, p_invoicenumber, p_invoicestart, p_invoiceend, p_username], (err, result) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false

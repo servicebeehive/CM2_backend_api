@@ -33,7 +33,8 @@ app.use(helmet.frameguard());
 const allowedOrigins = [
   'https://cm2.beehiveinfotech.com', // production
   'http://localhost:4200',           // local development
-  'http://13.201.136.123'
+  'http://13.201.136.123',
+  'http://3.109.216.18'
 ];
 
 const corsOptions = {

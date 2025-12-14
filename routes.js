@@ -35,6 +35,7 @@ const router = express.Router()
     , gettrasnactionreportController = projectModels['gettrasnactionreport']
     , getdashboardreportController = projectModels['getdashboardreport']
     , getinvoicedetailsController = projectModels['getinvoicedetails']
+    , updateprofileController = projectModels['updateprofile']
     , gettrasnactiondetailsController = projectModels['gettrasnactiondetails']
 
 //router.post('/authenticate',adauth.authenticate)
@@ -67,6 +68,7 @@ router.post('/gettrasnactionreport', gettrasnactionreportController.gettrasnacti
 router.post('/getdashboardreport', getdashboardreportController.getdashboardreport)
 router.post('/getinvoicedetails', getinvoicedetailsController.getinvoicedetails)
 router.post('/gettrasnactiondetails', gettrasnactiondetailsController.gettrasnactiondetails)
+router.post('/updateprofile', updateprofileController.updateprofile)
 router.post('/notification', notificationController.notification)
 //
 console.log('Server Started')

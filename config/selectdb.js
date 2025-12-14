@@ -8,7 +8,7 @@ let selectCilentDataBaseDetails = (clientcode, db) => {
         if (clientcode) {
             console.log('The Client Id value is', clientcode)
             db.query('SELECT get_client_detail($1::text)', [clientcode], (err, result) => {
-                console.log('The Result is client___', result.rows[0].get_client_detail[0])
+                console.log('The Result is client___', result.rows[0])
 
                 if (err) {
                     reject(null)

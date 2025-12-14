@@ -48,8 +48,9 @@ module.exports.login = (req, res, next) => {
             console.log('result', result)
             if (result.validatedclient === true) {
                 db.clientdb = result.dbname
+                console.log('db.clientdb', db.clientdb);
                 db.query('Select ' + db.clientdb + '.get_user_login($1,$2,$3)', [usercode, pwd, logintype], (err, finalresult) => {
-                    console.log('finalresult', finalresult.rows[0]);
+                    console.log('finalresult', finalresult);
                     if (err) {
                         console.log('The Error', err)
                         response['success'] = false
@@ -89,7 +90,7 @@ module.exports.login = (req, res, next) => {
                                 }
                             })
                         } else {
-                            if (token == null || token == '') {
+                            if (token == null) {
                                 _generateToken(usercode).then(returntoken => {
                                     console.log('The Generated Token Is', returntoken)
                                     _updateNewGeneratedTokenInDataBase(usercode, returntoken).then(result => {

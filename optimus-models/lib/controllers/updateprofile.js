@@ -15,6 +15,13 @@ module.exports.updateprofile = (req, res, next) => {
       , p_companycontactphone = req.body.p_companycontactphone
       , p_companycontactemail = req.body.p_companycontactemail
       , p_companylogo = req.body.p_companylogo
+      , p_statecode = req.body.p_statecode
+      , p_bankname = req.body.p_bankname
+      , p_branch = req.body.p_branch
+      , p_ifsc = req.body.p_ifsc
+      , p_accountno = req.body.p_accountno
+      , p_pan = req.body.p_pan
+      , p_warehouse = req.body.p_warehouse
       , p_loginuser = req.body.p_loginuser
       , clientschema = req.headers.options.db.clientdb
 
@@ -28,7 +35,7 @@ module.exports.updateprofile = (req, res, next) => {
 
    return new Promise((resolve, reject) => {
 
-      db.query('select ' + clientschema + '.update_profile($1::text,$2::text,$3::text,$4::text,$5::text,$6::text,$7::text,$8::text,$9::text,$10::text,$11::text,$12::text,$13::text,$14::text)', [p_companyname, p_companyaddress, p_companycity, p_companystate, p_companycountry, p_companypincode, p_companyphone, p_companyemail, p_companygstno, p_companycontactperson, p_companycontactphone, p_companycontactemail, p_companylogo, p_loginuser], (err, result) => {
+      db.query('select ' + clientschema + '.update_profile($1::text,$2::text,$3::text,$4::text,$5::text,$6::text,$7::text,$8::text,$9::text,$10::text,$11::text,$12::text,$13::text,$14::text,$15::text,$16::text,$17::text,$18::text,$19::text,$20::text,$21::text)', [p_companyname, p_companyaddress, p_companycity, p_companystate, p_companycountry, p_companypincode, p_companyphone, p_companyemail, p_companygstno, p_companycontactperson, p_companycontactphone, p_companycontactemail, p_companylogo, p_statecode, p_bankname, p_branch, p_ifsc, p_accountno, p_pan, p_warehouse, p_loginuser], (err, result) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false

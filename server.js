@@ -16,7 +16,8 @@ console.log('PORT NUMBER', config.port);
 // ---------- MIDDLEWARES ---------- //
 
 // Body parser
-app.use(bodyParser.json({ limit: '10kb' }));
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 // Security headers via Helmet
 app.use(helmet());

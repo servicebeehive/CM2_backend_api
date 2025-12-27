@@ -9,6 +9,8 @@ module.exports.insertpurchaseheader = (req, res, next) => {
       , p_invoicedate = req.body.p_invoicedate
       , p_remarks = req.body.p_remarks
       , p_active = req.body.p_active
+      , p_deliveryboy  = req.body.p_deliveryboy
+      , p_amountpaid  = req.body.p_amountpaid
       , p_loginuser = req.body.p_loginuser
       , clientschema = req.headers.options.db.clientdb
       , response = {
@@ -21,7 +23,7 @@ module.exports.insertpurchaseheader = (req, res, next) => {
 
    return new Promise((resolve, reject) => {
 
-      db.query('select ' + clientschema + '.insert_purchase_header($1,$2,$3,$4,$5,$6,$7,$8)', [p_operationtype, p_purchaseid, p_vendorid, p_invoiceno, p_invoicedate, p_remarks, p_active, p_loginuser], (err, result) => {
+      db.query('select ' + clientschema + '.insert_purchase_header($1::text,$2::text,$3::text,$4::text,$5::text,$6::text,$7::text,$8::text,$9::numeric,$10::text)', [p_operationtype, p_purchaseid, p_vendorid, p_invoiceno, p_invoicedate, p_remarks, p_active, p_deliveryboy, p_amountpaid, p_loginuser], (err, result) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false

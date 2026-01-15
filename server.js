@@ -33,9 +33,10 @@ app.use(helmet.frameguard());
 
 const allowedOrigins = [
   'https://cm2.beehiveinfotech.com', // production
-  'http://localhost:4200',           // local development
+  'http://localhost:4200',
+  'https://localhost',           // local development
   'http://13.201.136.123',
-  'http://3.109.216.18'
+  'http://13.200.62.244'
 ];
 
 const corsOptions = {
@@ -47,7 +48,8 @@ const corsOptions = {
       callback(null, true);
     } else {
       console.log('❌ Blocked by CORS:', origin);
-      callback(new Error('Not allowed by CORS'));
+      // callback(new Error('Not allowed by CORS'));
+      callback(null, false);
     }
   },
   credentials: true,
@@ -55,6 +57,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // ---------- CUSTOM LOGGING + HEADERS ---------- //
 

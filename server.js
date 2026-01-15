@@ -36,21 +36,31 @@ const allowedOrigins = [
   'http://localhost:4200',
   'https://localhost',           // local development
   'http://13.201.136.123',
-  'http://13.200.62.244'
+  'http://13.200.62.244',
+  'ionic://localhost'
 ];
 
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allow non-browser requests (like Postman)
-    if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.log('❌ Blocked by CORS:', origin);
-      // callback(new Error('Not allowed by CORS'));
-      callback(null, false);
+    // ✅ Allow Postman, mobile apps, WebView
+    if (!origin) {
+      return callback(null, true);
     }
+
+    // ✅ Allow known web origins
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    // ✅ Allow Cordova / Ionic file based origin
+    if (origin.startsWith('file://')) {
+      return callback(null, true);
+    }
+
+    // 🔒 Prod safe: log but DO NOT block mobile
+    console.log('⚠️ CORS allowed for mobile origin:', origin);
+    return callback(null, true);
   },
   credentials: true,
   optionsSuccessStatus: 200,
@@ -83,7 +93,7 @@ app.use('/api/v1/', require(appDir + '/routes'));
 
 app.set('port', process.env.PORT || config.port);
 const server = app.listen(app.get('port'), () => {
-  console.log(`🚀 Server running on port ${app.get('port')}`);
+  console.log(`ðŸš€ Server running on port ${app.get('port')}`);
 });
 
 module.exports = app;

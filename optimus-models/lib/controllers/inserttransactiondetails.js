@@ -23,6 +23,7 @@ module.exports.inserttransactiondetails = (req, res, next) => {
       , p_paymentmode = req.body.p_paymentmode
       , p_paymentdue = req.body.p_paymentdue
       , p_discounttype = req.body.p_discounttype
+      , p_custgstno = req.body.p_custgstno
       , clientschema = req.headers.options.db.clientdb
       , response = {
          'success': false,
@@ -35,7 +36,7 @@ module.exports.inserttransactiondetails = (req, res, next) => {
 
       const saleValue = JSON.stringify(req.body.p_sale);
 
-      db.query('select ' + clientschema + '.insert_transaction_details($1::text,$2::int,$3::text,$4::text,$5::text,$6::numeric,$7::numeric,$8::numeric,$9::numeric,$10::int,$11::int,$12::text,$13::text,$14::text,$15::text,$16::int,$17::text,$18::text,$19::text,$20::text,$21::numeric,$22::jsonb)', [p_transactiontype, p_transactionid, p_transactiondate, p_customername, p_mobileno, p_totalcost, p_totalsale, p_overalldiscount, p_roundoff, p_totalpayable, p_currencyid, p_gsttran, p_status, p_isactive, p_loginuser, p_linktransactionid, p_discounttype, p_replacesimilir, p_creditnoteno, p_paymentmode, p_paymentdue, saleValue], (err, result) => {
+      db.query('select ' + clientschema + '.insert_transaction_details($1::text,$2::int,$3::text,$4::text,$5::text,$6::numeric,$7::numeric,$8::numeric,$9::numeric,$10::int,$11::int,$12::text,$13::text,$14::text,$15::text,$16::int,$17::text,$18::text,$19::text,$20::text,$21::numeric,$22::text,$23::jsonb)', [p_transactiontype, p_transactionid, p_transactiondate, p_customername, p_mobileno, p_totalcost, p_totalsale, p_overalldiscount, p_roundoff, p_totalpayable, p_currencyid, p_gsttran, p_status, p_isactive, p_loginuser, p_linktransactionid, p_discounttype, p_replacesimilir, p_creditnoteno, p_paymentmode, p_paymentdue,p_custgstno, saleValue], (err, result) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false

@@ -1,5 +1,5 @@
 'use strict'
-const selectDBObject = require('../../../../config/selectdb.js')
+const selectDBObject = require('../../../config/selectdb.js')
 
 module.exports.login = (req, res, next) => {
     let options = req.headers.options
@@ -11,7 +11,7 @@ module.exports.login = (req, res, next) => {
         , clientcode = req.body.clientcode
         , jwt = require('jsonwebtoken')
         , secret = "beehive@dev"
-        , emailconfig = require('../../../../config/emailsend.js')
+        , emailconfig = require('../../../config/emailsend.js')
         , response = {
             'success': false,
             'message': ''

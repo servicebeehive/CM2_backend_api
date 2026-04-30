@@ -7,8 +7,8 @@ const express = require('express')
 const router = express.Router()
     // const fileUpload = require('express-fileupload')
 
-    , projectModels = require('optimus-models')
-    , adauth = require('optimus-auth')
+    , projectModels = require('./optimus-models')
+    , adauth = require('./optimus-auth')
     , logincontroller = projectModels['login']
     , inserttaskdetailsController = projectModels['inserttaskdetails']
     , gettaskdetailsController = projectModels['gettaskdetails']
@@ -37,7 +37,11 @@ const router = express.Router()
     , getinvoicedetailsController = projectModels['getinvoicedetails']
     , updateprofileController = projectModels['updateprofile']
     , gettrasnactiondetailsController = projectModels['gettrasnactiondetails']
-
+    , tbltransactionmiscController = projectModels['tbltransactionmisc']
+    , fnupserttransactionmiscController = projectModels['fnupserttransactionmisc']
+    , fndeletetransactionmiscController = projectModels['fndeletetransactionmisc']
+    , fnupsertcustomermasterController = projectModels['fnupsertcustomermaster']
+    , fnupsertsuppliermasterController = projectModels['fnupsertsuppliermaster']
 //router.post('/authenticate',adauth.authenticate)
 
 router.post('/login', logincontroller.login)
@@ -70,6 +74,11 @@ router.post('/getinvoicedetails', getinvoicedetailsController.getinvoicedetails)
 router.post('/gettrasnactiondetails', gettrasnactiondetailsController.gettrasnactiondetails)
 router.post('/updateprofile', updateprofileController.updateprofile)
 router.post('/notification', notificationController.notification)
+router.post('/tbltransactionmisc', tbltransactionmiscController.tbltransactionmisc)
+router.post('/fnupserttransactionmisc', fnupserttransactionmiscController.fnupserttransactionmisc)
+router.post('/fndeletetransactionmisc', fndeletetransactionmiscController.fndeletetransactionmisc)
+router.post('/fnupsertcustomermaster', fnupsertcustomermasterController.fnupsertcustomermaster)
+router.post('/fnupsertsuppliermaster',fnupsertsuppliermasterController.fnupsertsuppliermaster)
 //
 console.log('Server Started')
 module.exports = router

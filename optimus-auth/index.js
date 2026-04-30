@@ -1,5 +1,5 @@
 'use strict'
-const selectDBObject = require('../../config/selectdb.js')
+const selectDBObject = require('../config/selectdb.js')
 const _ = require('lodash')
     , jwt = require('jsonwebtoken')
     , secret = "beehive@dev"

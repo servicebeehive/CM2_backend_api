@@ -1,25 +1,24 @@
 "use strict";
-module.exports.fnupserttransactionmisc = (req, res, next) => {
+module.exports.fnmanageapprovalrulelevels = (req, res, next) => {
   let options = req.headers.options,
     db = options.db,
-    p_transaction_id = req.body.p_transaction_id,
-    p_transaction_date = req.p_transaction_date,
-    p_head = req.body.p_head,
-    p_amount = req.body.p_amount,
-    p_username = req.body.p_username,
+    p_rule_id = req.body.p_rule_id,
+    p_rule_creation_id = req.body.p_rule_creation_id,
+    p_levels = req.body.p_levels,
+    p_created_by = req.body.p_created_by,
     clientschema = req.headers.options.db.clientdb,
     response = {
       success: false,
       message: "",
     };
-  console.log("The bosy is", clientschema);
+  console.log("The body is", clientschema);
 
   return new Promise((resolve, reject) => {
     db.query(
       "select " +
         clientschema +
-        ".fn_upsert_transaction_misc($1::int,$2::text,$3::text,$4::numeric,$5::text)",
-      [p_transaction_id, p_transaction_date, p_head, p_amount, p_username],
+        ".fn_manage_approval_rule_levels($1::int,$2::int,$3::jsonb,$4::int)",
+      [p_rule_id, p_rule_creation_id, p_levels, p_created_by],
       (err, result) => {
         if (err) {
           console.log("The Error", err);
@@ -29,7 +28,7 @@ module.exports.fnupserttransactionmisc = (req, res, next) => {
         } else {
           response["success"] = true;
           response["message"] = "data fetch";
-          response["data"] = result.rows[0].fn_upsert_transaction_misc;
+          response["data"] = result.rows[0].fn_manage_approval_rule_levels;
           return resolve(response);
         }
       },

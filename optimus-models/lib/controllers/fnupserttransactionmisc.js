@@ -3,7 +3,7 @@ module.exports.fnupserttransactionmisc = (req, res, next) => {
   let options = req.headers.options,
     db = options.db,
     p_transaction_id = req.body.p_transaction_id,
-    p_transaction_date = req.p_transaction_date,
+    p_transaction_date = req.body.p_transaction_date,
     p_head = req.body.p_head,
     p_amount = req.body.p_amount,
     p_username = req.body.p_username,

@@ -18,7 +18,7 @@ module.exports.tbltransactionmisc = (req, res, next) => {
     console.log('The body is', clientschema)
 
     return new Promise((resolve,reject)=>{
-        db.query('select ' + clientschema + '.tbl_transaction_misc($1::int,$2::text,$3::text,$4::int,$5::text,$6::text,$7::text,$8::text)'
+        db.query('select ' + clientschema + '.tbl_transaction_misc($1::int,$2::text,$3::text,$4::numeric,$5::text,$6::text,$7::text,$8::text)'
         ,[transaction_id, transaction_date, head, amount, createdby, createdon,updatedby, updatedon], (err, result) =>{
             if(err){
                 console.log('The Error',err)

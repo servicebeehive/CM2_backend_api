@@ -1,7 +1,8 @@
 "use strict";
-module.exports.fndeletetransactionmisc = (req, res, next) => {
+module.exports.fndeletetransaction = (req, res, next) => {
   let options = req.headers.options,
     db = options.db,
+    p_type = req.body.p_type,
     p_transaction_id = req.body.p_transaction_id,
     p_username = req.body.p_username,
     clientschema = req.headers.options.db.clientdb,
@@ -15,8 +16,8 @@ module.exports.fndeletetransactionmisc = (req, res, next) => {
     db.query(
       "select " +
         clientschema +
-        ".fn_delete_transaction_misc($1::int,$2::text)",
-      [p_transaction_id, p_username],
+        ".fn_delete_transaction($1::text,$2::int,$3::text)",
+      [p_type,p_transaction_id, p_username],
       (err, result) => {
         if (err) {
           console.log("The Error", err);
@@ -26,7 +27,7 @@ module.exports.fndeletetransactionmisc = (req, res, next) => {
         } else {
           response["success"] = true;
           response["message"] = "data fetch";
-          response["data"] = result.rows[0].fn_delete_transaction_misc;
+          response["data"] = result.rows[0].fn_delete_transaction;
           return resolve(response);
         }
       },

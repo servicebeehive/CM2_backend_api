@@ -39,7 +39,7 @@ const router = express.Router()
     , gettrasnactiondetailsController = projectModels['gettrasnactiondetails']
     , tbltransactionmiscController = projectModels['tbltransactionmisc']
     , fnupserttransactionmiscController = projectModels['fnupserttransactionmisc']
-    , fndeletetransactionmiscController = projectModels['fndeletetransactionmisc']
+    , fndeletetransactionController = projectModels['fndeletetransaction']
     , fnupsertcustomermasterController = projectModels['fnupsertcustomermaster']
     , fnupsertsuppliermasterController = projectModels['fnupsertsuppliermaster']
     , fnmanageapprovalrulelevelsController = projectModels['fnmanageapprovalrulelevels']
@@ -77,7 +77,7 @@ router.post('/updateprofile', updateprofileController.updateprofile)
 router.post('/notification', notificationController.notification)
 router.post('/tbltransactionmisc', tbltransactionmiscController.tbltransactionmisc)
 router.post('/fnupserttransactionmisc', fnupserttransactionmiscController.fnupserttransactionmisc)
-router.post('/fndeletetransactionmisc', fndeletetransactionmiscController.fndeletetransactionmisc)
+router.post('/fndeletetransaction', fndeletetransactionController.fndeletetransaction)
 router.post('/fnupsertcustomermaster', fnupsertcustomermasterController.fnupsertcustomermaster)
 router.post('/fnupsertsuppliermaster',fnupsertsuppliermasterController.fnupsertsuppliermaster)
 router.post('/fnmanageapprovalrulelevels', fnmanageapprovalrulelevelsController.fnmanageapprovalrulelevels)

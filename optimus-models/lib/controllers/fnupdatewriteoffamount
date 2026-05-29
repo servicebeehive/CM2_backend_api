@@ -1,11 +1,9 @@
 "use strict";
-module.exports.fnmanageapprovalrulelevels = (req, res, next) => {
+module.exports.fnupdatewriteoffamount = (req, res, next) => {
   let options = req.headers.options,
     db = options.db,
-    p_rule_id = req.body.p_rule_id,
-    p_rule_creation_id = req.body.p_rule_creation_id,
-    p_levels = JSON.stringify(req.body.p_levels),
-    p_created_by = req.body.p_created_by,
+    p_writeoff_json = JSON.stringify(req.body.p_writeoff_json),
+    p_username = req.body.p_username,
     clientschema = req.headers.options.db.clientdb,
     response = {
       success: false,
@@ -17,8 +15,8 @@ module.exports.fnmanageapprovalrulelevels = (req, res, next) => {
     db.query(
       "select " +
         clientschema +
-        ".fn_manage_approval_rule_levels($1::int,$2::int,$3::jsonb,$4::int)",
-      [p_rule_id, p_rule_creation_id, p_levels, p_created_by],
+        ".fn_update_writeoff_amount($1::jsonb,$2::text)",
+      [p_writeoff_json, p_username],
       (err, result) => {
         if (err) {
           console.log("The Error", err);
@@ -28,7 +26,7 @@ module.exports.fnmanageapprovalrulelevels = (req, res, next) => {
         } else {
           response["success"] = true;
           response["message"] = "data fetch";
-          response["data"] = result.rows[0].fn_manage_approval_rule_levels;
+          response["data"] = result.rows[0].fn_update_writeoff_amount;
           return resolve(response);
         }
       },

@@ -43,6 +43,7 @@ const router = express.Router()
     , fnupsertcustomermasterController = projectModels['fnupsertcustomermaster']
     , fnupsertsuppliermasterController = projectModels['fnupsertsuppliermaster']
     , fnmanageapprovalrulelevelsController = projectModels['fnmanageapprovalrulelevels']
+    , fnupdatewriteoffamountController = projectModels['fnupdatewriteoffamount']
 //router.post('/authenticate',adauth.authenticate)
 
 router.post('/login', logincontroller.login)
@@ -81,6 +82,7 @@ router.post('/fndeletetransaction', fndeletetransactionController.fndeletetransa
 router.post('/fnupsertcustomermaster', fnupsertcustomermasterController.fnupsertcustomermaster)
 router.post('/fnupsertsuppliermaster',fnupsertsuppliermasterController.fnupsertsuppliermaster)
 router.post('/fnmanageapprovalrulelevels', fnmanageapprovalrulelevelsController.fnmanageapprovalrulelevels)
+router.post('/fnupdatewriteoffamount', fnupdatewriteoffamountController.fnupdatewriteoffamount)
 //
 console.log('Server Started')
 module.exports = router

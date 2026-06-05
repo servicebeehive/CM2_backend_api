@@ -1,12 +1,11 @@
 'use strict'
-module.exports.fnapproverequest = (req, res, next) => {
+module.exports.get_pnl = (req, res, next) => {
    let options = req.headers.options
       , db = options.db
-      , p_request_id = req.body.p_request_id
-      , p_user_id = req.body.p_user_id
-      , p_usertype_id = req.body.p_usertype_id
-      , p_action = req.body.p_action
-      , p_remarks = req.body.p_remarks ?? null
+      , p_reporttype = req.body.p_reporttype
+      , p_fromdate = req.body.p_fromdate
+      , p_todate = req.body.p_todate
+      , p_loginuser = req.body.p_loginuser
       , clientschema = req.headers.options.db.clientdb
       , response = {
          'success': false,
@@ -16,7 +15,7 @@ module.exports.fnapproverequest = (req, res, next) => {
   
    return new Promise((resolve, reject) => {
 
-      db.query('select ' + clientschema + '.fn_approve_request($1::int,$2::int,$3::int,$4::text,$5::text)', [p_request_id, p_user_id, p_usertype_id, p_action, p_remarks], (err, result) => {
+      db.query('select ' + clientschema + '.get_pnl($1::text,$2::text,$3::text,$4::text)', [p_reporttype ,p_fromdate, p_todate, p_loginuser], (err, result) => {
          if (err) {
             console.log('The Error', err)
             response['success'] = false
@@ -27,7 +26,7 @@ module.exports.fnapproverequest = (req, res, next) => {
 
             response['success'] = true
             response['message'] = 'data fetch'
-            response['data'] = result.rows[0].fn_approve_request
+            response['data'] = result.rows[0].get_pnl
             return resolve(response)
 
          }

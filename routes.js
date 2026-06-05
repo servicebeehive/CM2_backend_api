@@ -45,6 +45,7 @@ const router = express.Router()
     , fnmanageapprovalrulelevelsController = projectModels['fnmanageapprovalrulelevels']
     , fnupdatewriteoffamountController = projectModels['fnupdatewriteoffamount']
     , fnapproverequestController = projectModels['fnapproverequest']
+    , get_pnlController = projectModels['get_pnl']
 //router.post('/authenticate',adauth.authenticate)
 
 router.post('/login', logincontroller.login)
@@ -85,6 +86,7 @@ router.post('/fnupsertsuppliermaster',fnupsertsuppliermasterController.fnupserts
 router.post('/fnmanageapprovalrulelevels', fnmanageapprovalrulelevelsController.fnmanageapprovalrulelevels)
 router.post('/fnupdatewriteoffamount', fnupdatewriteoffamountController.fnupdatewriteoffamount)
 router.post('/fnapproverequest', fnapproverequestController.fnapproverequest )
+router.post('/get_pnl', get_pnlController.get_pnl)
 //
 console.log('Server Started')
 module.exports = router

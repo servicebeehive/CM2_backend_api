@@ -18,7 +18,6 @@ const router = express.Router()
     , getreporttdataController = projectModels['getreportdata']
     , getdevicetokenController = projectModels['getdevicetoken']
     , notificationController = projectModels['notification']
-    , forgotpasswordController = projectModels['forgotpassword']
     , dropdownDetailsController = projectModels['dropdowndetails']
     , insertpurchaseheaderController = projectModels['insertpurchaseheader']
     , insertitemdetailsController = projectModels['insertitemdetails']
@@ -49,7 +48,6 @@ const router = express.Router()
 //router.post('/authenticate',adauth.authenticate)
 
 router.post('/login', logincontroller.login)
-router.post('/forgotpassword', forgotpasswordController.forgotpassword)
 router.use(adauth.login)
 router.post('/inserttask', inserttaskdetailsController.inserttaskdetails)
 router.post('/gettaskdetails', gettaskdetailsController.gettaskdetails)

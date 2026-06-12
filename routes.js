@@ -7,8 +7,8 @@ const express = require('express')
 const router = express.Router()
     // const fileUpload = require('express-fileupload')
 
-    , projectModels = require('optimus-models')
-    , adauth = require('optimus-auth')
+    , projectModels = require('./optimus-models')
+    , adauth = require('./optimus-auth')
     , logincontroller = projectModels['login']
     , inserttaskdetailsController = projectModels['inserttaskdetails']
     , gettaskdetailsController = projectModels['gettaskdetails']
@@ -37,7 +37,15 @@ const router = express.Router()
     , getinvoicedetailsController = projectModels['getinvoicedetails']
     , updateprofileController = projectModels['updateprofile']
     , gettrasnactiondetailsController = projectModels['gettrasnactiondetails']
-
+    , tbltransactionmiscController = projectModels['tbltransactionmisc']
+    , fnupserttransactionmiscController = projectModels['fnupserttransactionmisc']
+    , fndeletetransactionController = projectModels['fndeletetransaction']
+    , fnupsertcustomermasterController = projectModels['fnupsertcustomermaster']
+    , fnupsertsuppliermasterController = projectModels['fnupsertsuppliermaster']
+    , fnmanageapprovalrulelevelsController = projectModels['fnmanageapprovalrulelevels']
+    , fnupdatewriteoffamountController = projectModels['fnupdatewriteoffamount']
+    , fnapproverequestController = projectModels['fnapproverequest']
+    , get_pnlController = projectModels['get_pnl']
 //router.post('/authenticate',adauth.authenticate)
 
 router.post('/login', logincontroller.login)
@@ -70,6 +78,15 @@ router.post('/getinvoicedetails', getinvoicedetailsController.getinvoicedetails)
 router.post('/gettrasnactiondetails', gettrasnactiondetailsController.gettrasnactiondetails)
 router.post('/updateprofile', updateprofileController.updateprofile)
 router.post('/notification', notificationController.notification)
+router.post('/tbltransactionmisc', tbltransactionmiscController.tbltransactionmisc)
+router.post('/fnupserttransactionmisc', fnupserttransactionmiscController.fnupserttransactionmisc)
+router.post('/fndeletetransaction', fndeletetransactionController.fndeletetransaction)
+router.post('/fnupsertcustomermaster', fnupsertcustomermasterController.fnupsertcustomermaster)
+router.post('/fnupsertsuppliermaster',fnupsertsuppliermasterController.fnupsertsuppliermaster)
+router.post('/fnmanageapprovalrulelevels', fnmanageapprovalrulelevelsController.fnmanageapprovalrulelevels)
+router.post('/fnupdatewriteoffamount', fnupdatewriteoffamountController.fnupdatewriteoffamount)
+router.post('/fnapproverequest', fnapproverequestController.fnapproverequest )
+router.post('/get_pnl', get_pnlController.get_pnl)
 //
 console.log('Server Started')
 module.exports = router

@@ -1,5 +1,5 @@
 'use strict'
-const selectDBObject = require('../../../../config/selectdb.js')
+const selectDBObject = require('../../../config/selectdb.js')
 
 module.exports.forgotpassword = (req, res, next) => {
    let options = req.headers.options

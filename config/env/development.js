@@ -9,10 +9,8 @@ module.exports = {
 
     database: {
         username: 'postgres',
-        password: 'admin',
-        databasename: 'CM2_Dev'
-
-
+        password: 'beehive@@2026',
+        databasename: 'beehivepro_dev'
     },
     paytmconfig: {
         mid: "Kkatvd34334425459416",

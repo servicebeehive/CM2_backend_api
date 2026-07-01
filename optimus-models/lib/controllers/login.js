@@ -46,7 +46,7 @@ module.exports.login = (req, res, next) => {
 
         selectDBObject(clientcode, db).then(result => {
             console.log('result', result)
-            if (result.validatedclient === true) {
+            if (result) {
                 db.clientdb = result.dbname
                 console.log('db.clientdb', db.clientdb);
                 db.query('Select ' + db.clientdb + '.get_user_login($1,$2,$3)', [usercode, pwd, logintype], (err, finalresult) => {

@@ -3,7 +3,7 @@
 let selectCilentDataBaseDetails = (clientcode, db) => {
     return new Promise((resolve, reject) => {
 
-        db.query("SELECT 'cm2' AS clientdb, 'cm2' AS dbname", (err, result) => {
+        db.query("SELECT 'cm2' AS clientdb, 'cm2' AS dbname, 1 AS validatedclient", (err, result) => {
             if (err) {
                 console.log('Error in selectCilentDataBaseDetails', err)
                 reject(err)
